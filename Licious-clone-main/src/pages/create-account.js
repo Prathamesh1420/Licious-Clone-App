@@ -8,24 +8,19 @@ const CreateAccountPage = () => {
   const [lastName, setLastName] = useState();
   const [userName, setUserName] = useState();
   const [password, setPassword] = useState();
-  const addAccount = () => {
-    // let details = {
-    //   firstName: document.getElementById("first-name").value,
-    //   lastName: document.getElementById("last-name").value,
-    //   username: document.getElementById("username").value,
-    //   password: document.getElementById("password").value,
-    //   cart: context.cart,
-    // };
 
+  const addAccount = () => {
     emptyObject.firstName = firstName;
     emptyObject.lastName = lastName;
     emptyObject.userName = userName;
     emptyObject.password = password;
     emptyObject.cart = context.cart;
     const prevRecords = JSON.parse(localStorage.getItem("accounts")) ?? [];
+    console.log("previous accounts", prevRecords);
 
     // checking if account already present & we can also use find method
     let match = prevRecords.filter((e) => e.userName === userName);
+    console.log(match);
     if (match.length !== 0) {
       alert("Account already exists. Please login");
     } else {

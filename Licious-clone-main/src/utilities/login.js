@@ -1,24 +1,35 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { MyContext } from "../context/app-context";
+import Logout from "./logout";
 
 const Login = () => {
-  const context = useContext(MyContext);
-  let loginText = "Login";
+  const context2 = useContext(MyContext);
+  const [login, setLogin] = useState("Login");
   const fetch = JSON.parse(sessionStorage.getItem("user"));
-  if (context.logInStatus === false && fetch === null) loginText = "Login";
-  else {
-    loginText = `Hi, ${fetch.firstName}`;
-  }
-  const showLogin = (lt) => {
-    if (lt === "Login") {
-      return document.getElementById("login-modal").showModal();
+
+  useEffect(() => {
+    if (context2.logInStatus !== false && context2.currentUser !== null) {
+      setLogin(`Hi, ${fetch.firstName}`);
     } else {
-      sessionStorage.removeItem("user");
+      setLogin("Login");
+    }
+  }, [context2.logInStatus, context2.currentUser]);
+
+  const showLogin = (loginText) => {
+    console.log(loginText);
+    if (loginText === "Login") {
+      document.getElementById("login-modal").showModal();
+    } else {
       window.location.reload();
-      alert("Logout Successfully");
     }
   };
-  return <div onClick={(e) => showLogin(loginText)}>{loginText}</div>;
+
+  return (
+    <>
+      <div style={{ marginLeft:"10px" }} onClick={() => showLogin(login)} >{login}</div>
+      {login !== "Login" && <Logout />}
+    </>
+  );
 };
 
 export default Login;

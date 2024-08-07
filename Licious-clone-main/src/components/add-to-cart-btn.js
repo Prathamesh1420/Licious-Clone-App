@@ -16,7 +16,7 @@ const AddToCart = (props) => {
     //comparing from existing(item) and new item(arr)
 
     let found = false;
-    //Checking if the itme is already present and if present then increasing the quantity
+    //Checking if the item is already present in cart and if present then increasing the quantity
     arr.forEach((e) => {
       if (e.name === item.name) {
         e.quantity++;
@@ -31,23 +31,24 @@ const AddToCart = (props) => {
     }
   };
 
-  //whenver the context.cart will change it will also update in SessionStorage using setItem
-  useEffect(() => {
+  const addToCart = () => {
+    if (context.currentUser === null) {
+      return alert("Plese Login First To Add");
+    }
+    alert("Successfully Added To Cart");
+    let arr = context.cart;
+    console.log("this is the context.cart", arr); //array of objects from cart
+
+    checkItemInCart(currentItem, arr);
+    //always updating new added Cart using setCart
+    context.setCart(arr);
+    console.log("this is new", context.cart);
+    //whenver the context.cart will change it will also update in SessionStorage using setItem
     const currentUser = JSON.parse(sessionStorage.getItem("user")) ?? {};
     currentUser.cart = context.cart;
 
     //Inserting in sessionStorage
     sessionStorage.setItem("user", JSON.stringify(currentUser));
-  }, [context.cart]);
-
-  const addToCart = () => {
-    alert("Successfully Added To Cart");
-    let arr = context.cart;
-    console.log(arr); //array of objects from cart
-
-    checkItemInCart(currentItem, arr);
-    //always updating new added Cart using setCart
-    context.setCart(arr);
   };
 
   return (
@@ -58,8 +59,9 @@ const AddToCart = (props) => {
         e.stopPropagation();
       }}
       className="add-to-cart-btn wide-btn"
+      style={{ padding: "2px 20px", borderRadius: "5px" }}
     >
-      Add to cart
+      Add
     </button>
   );
 };

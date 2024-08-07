@@ -21,9 +21,12 @@ const Modal = () => {
       alert("Account does not exist. Create new account.");
     else if (match[0]?.password === password) {
       alert(`welcome ${match[0].firstName}`);
-      if (match[0].cart !== null) context.setCart(match[0].cart);
+      if (match[0].cart !== null) {
+        context.setCart(match[0].cart);
+      }
       context.setLogInStatus(true);
       sessionStorage.setItem("user", JSON.stringify(match[0]));
+      window.location.reload();
     } else if (match[0].password !== password) alert("Incorrect password");
   };
 

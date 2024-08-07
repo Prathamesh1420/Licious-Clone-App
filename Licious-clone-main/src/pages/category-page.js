@@ -3,7 +3,7 @@ import AddToCart from "../components/add-to-cart-btn";
 import SmallCard from "../components/small-card";
 import { Items } from "../data/items";
 
-//location is use when state passed in link or navigate property
+//location is use when some state value is passed through (link or navigate) property
 const CategoryPage = () => {
   const location = useLocation();
   let spam = 1;
@@ -15,7 +15,7 @@ const CategoryPage = () => {
   return (
     <div className="main">
       <div className="page-title-heading">
-        <h3>Showing search result for {location.state.name}</h3>
+        <h3>Showing search result</h3>
       </div>
       <div className="list">
         {/* fitering if the name is present in name from item.js */}
@@ -31,7 +31,7 @@ const CategoryPage = () => {
                 Wt={e.net}
                 unit={e.unit}
               >
-                <AddToCart
+                <AddToCart 
                   image={e.imgUrl}
                   name={e.name}
                   price={e.price}

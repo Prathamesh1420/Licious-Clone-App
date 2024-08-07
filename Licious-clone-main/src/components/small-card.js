@@ -10,12 +10,12 @@ const SmallCard = (props) => {
   };
   return (
     <div className="small-card" onClick={showDetails}>
-      <img src={image} alt="item" />
+      <img src={image} alt="item" style={{ borderRadius: "7px" }} />
       <div>
         <p>{name}</p>
-        <p>₹{price}</p>
+        <p>₹{price}.00</p>
         <p>
-          {net} {Wt}
+          {Wt}<span> </span>
           {unit}
         </p>
         {props.quantity && <p>Quantity : {props.quantity}</p>}

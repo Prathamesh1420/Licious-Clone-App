@@ -1,6 +1,6 @@
 :root {
   --navbar-color: white;
-  --small-card-width: max(300px, 30vw);
+  --small-card-width: max(450px, 28vw);
   --active-theme-color: crimson;
   --body-width: calc(2 * var(--small-card-width) + 1rem);
 }
@@ -95,12 +95,15 @@ dialog form * {
 
 /* main page */
 .horizontal-list {
+  max-width: 100%;
+  margin: auto;
   max-height: fit-content;
   display: flex;
-  overflow-y: auto;
+  flex-direction: row;
   text-align: center;
   gap: 1rem;
-  scroll-behavior: smooth;
+  /* overflow-y: auto; */
+  /* scroll-behavior: smooth; */
 }
 
 /* listing */
@@ -109,6 +112,8 @@ dialog form * {
   cursor: pointer;
   font-style: italic;
 }
+
+/* .card-img{} */
 
 .list {
   display: flex;
@@ -126,8 +131,9 @@ dialog form * {
   cursor: pointer;
   flex-direction: row;
   width: var(--small-card-width);
-  gap: 0.5rem;
-  border: 2px solid #ccc;
+  gap: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 7px;
   padding: 0.3rem;
 }
 
@@ -135,7 +141,7 @@ dialog form * {
 .item-img {
   /* width: max(120px, 15vw);
   aspect-ratio: 1 !important; */
-  width: 180px;
+  width: 190px;
   height: 100%;
   object-fit: cover;
 }
@@ -144,7 +150,7 @@ dialog form * {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: cursive;
 }
 
 /* details page */
@@ -155,11 +161,17 @@ dialog form * {
   width: max(400px, 50vw);
   margin-inline: auto;
   gap: 1rem;
+  border-radius: 15px;
+
 }
 
 .detailed-description img {
-  object-fit: scale-down;
+  /* object-fit: scale-down; */
+  object-fit: cover;
+  margin: 0px 150px;
+  width: auto;
 }
+
 
 .detailed-description .price {
   color: var(--active-theme-color);
@@ -196,7 +208,7 @@ dialog form * {
   border-bottom: 2px solid;
   border-top: 2px solid;
   margin-bottom: 1rem;
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  /* font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif; */
 }
 
 .checkout-btn {
@@ -222,4 +234,12 @@ dialog form * {
 
 .center-btn {
   margin-inline: auto;
+}
+
+/* search */
+#search-input {
+  width: 45%;
+  height: 35px;
+  border-radius: 5px;
+  background-color: rgb(237, 234, 234);
 }

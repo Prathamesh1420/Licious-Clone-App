@@ -16,15 +16,12 @@ const Navbar = () => {
       <div onClick={toHome} className="navbar-brand">
         The Meat Shop
       </div>
-      {/* <form onClick={handleSearch}> */}
       <input
         onClick={handleSearch}
         id="search-input"
         type="search"
-        placeholder="Search..."
+        placeholder="Search for any delicious product"
       />
-      {/* <button type="submit">go</button> */}
-      {/* </form> */}
       <Login />
       <Cart />
     </nav>

@@ -1,22 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
+// Context
 export const MyContext = React.createContext();
 
 export const ApplicationContextProvider = (props) => {
   const [logInStatus, setLogInStatus] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [cart, setCart] = useState([]);
 
-  const currentUser = JSON.parse(sessionStorage.getItem("user"));
-
-  const [cart, setCart] = useState(
-    //setting a user cart to setItem in sessionstorage
-    currentUser !== null ? currentUser.cart : []
-  );
+  useEffect(() => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    console.log("user", user);
+    setCurrentUser(user);
+    if (user !== null) {
+      setCart(user.cart || []);
+      setLogInStatus(true);
+    }
+  }, []);
 
   const value = {
     logInStatus,
     setLogInStatus,
     cart,
     setCart,
+    currentUser,
+    setCurrentUser,
   };
 
   return (

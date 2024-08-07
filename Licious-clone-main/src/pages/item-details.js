@@ -9,16 +9,17 @@ const ItemDetails = () => {
   return (
     <div className="main">
       <div className="detailed-description">
-        <img src={details.imgUrl} alt="item" />
+        <img src={details.imgUrl} alt="item" style={{ borderRadius: "15px" }} />
         <div>
-          <div className="page-title-heading">
-            <h3>{details.name}</h3>
+          <div className="page-title-heading"  >
+            <h3 style={{margin:"auto"}}>{details.name}</h3>
           </div>
           <h6>
             Net wt. {details.net} {details.unit}
           </h6>
           <p>{details.des}</p>
           <h4 className="price">₹{details.price}</h4>
+
           <AddToCart
             image={details.imgUrl}
             name={details.name}

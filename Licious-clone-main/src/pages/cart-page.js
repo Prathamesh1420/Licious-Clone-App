@@ -22,18 +22,6 @@ const CartPage = () => {
     const currentUser = JSON.parse(sessionStorage.getItem("user")) ?? [];
     currentUser.cart = context.cart;
     sessionStorage.setItem("user", JSON.stringify(currentUser));
-
-    //For decreasing quantity
-    // if (itemFind.quantity > 1) {
-    //   console.log("enter if ");
-    //   console.log("quantiyt reduced");
-    //   itemFind.quantity -= 1;
-    // } else {
-    //   console.log("enter else ");
-    //   context.cart = context.cart.filter((c) => c.id !== id);
-    //   context.setCart(context.cart);
-    // }
-
     console.log("After", context.cart);
   };
   const verify = () => {
@@ -55,7 +43,7 @@ const CartPage = () => {
         <h3>
           <span>Total : ₹{total}</span>
         </h3>
-        <button onClick={verify} className="active-color-btn checkout-btn">
+        <button onClick={verify} className="active-color-btn checkout-btn" style={{ padding: "2px 5px", borderRadius: "5px" }}>
           Checkout
         </button>
       </div>
@@ -78,6 +66,7 @@ const CartPage = () => {
                   event.stopPropagation();
                 }}
                 className="active-color-btn"
+                style={{ padding: "2px 20px", borderRadius: "5px" }}
               >
                 Remove
               </button>
