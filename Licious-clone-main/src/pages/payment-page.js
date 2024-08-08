@@ -14,8 +14,9 @@ const PaymentPage = () => {
       case "debit":
         return (
           <>
+            <h3 style={{ textAlign: "center" }}> Debit Card Details</h3>
             <input
-              placeholder="XXX-XXX-XXX"
+              placeholder="XXX-XXX-XXX-XXX"
               minLength="12"
               maxLength="12"
               type="number"
@@ -28,8 +29,9 @@ const PaymentPage = () => {
       case "credit":
         return (
           <>
+            <h3 style={{ textAlign: "center" }}> Credit Card Details</h3>
             <input
-              placeholder="XXX-XXX-XXX"
+              placeholder="XXX-XXX-XXX-XXX"
               minLength="12"
               maxLength="12"
               type="number"
@@ -42,7 +44,8 @@ const PaymentPage = () => {
       case "upi":
         return (
           <>
-            <input placeholder="UPI Id" required />
+            <h3 style={{ textAlign: "center" }}> UPI ID Details</h3>
+            <input placeholder="UPI ID" required />
           </>
         );
 
@@ -75,43 +78,37 @@ const PaymentPage = () => {
       </div>
       <div className="radio-flexbox">
         <div id="pay-head">
-          <input
+          <button
             onClick={() => setMethod("debit")}
             type="radio"
             id="debit"
             name="method"
             value="debit-card"
-            defaultChecked
-          />
-          <label htmlFor="method">
-            <h5>Debit Card</h5>
-          </label>
+          >
+            Debit Card
+          </button>
         </div>
 
         <div>
-          <input
+          <button
             onClick={() => setMethod("credit")}
-            type="radio"
             id="credit"
             name="method"
             value="credit-card"
-          />
-          <label htmlFor="method">
-            <h5>Credit Card</h5>
-          </label>
+          >
+            Credit Card
+          </button>
         </div>
 
         <div>
-          <input
+          <button
             onClick={() => setMethod("upi")}
-            type="radio"
-            id="debit"
+            id="upi"
             name="method"
-            value="debit-card"
-          />
-          <label htmlFor="method">
-            <h5>UPI</h5>
-          </label>
+            value="upi"
+          >
+            UPI
+          </button>
         </div>
       </div>
 

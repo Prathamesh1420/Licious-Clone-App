@@ -249,6 +249,13 @@ dialog button {
   justify-content: space-evenly;
 }
 
+.radio-flexbox button {
+  border-radius: 5px;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px rgb(83, 81, 81);
+  background-color: rgb(247, 42, 70);
+  color: white;
+}
 .center-btn {
   margin-inline: auto;
 }
