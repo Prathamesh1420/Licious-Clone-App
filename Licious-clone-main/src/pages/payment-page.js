@@ -58,13 +58,12 @@ const PaymentPage = () => {
     while (context.cart.length > 0) {
       context.cart.pop();
     }
-
     const currentUser = JSON.parse(sessionStorage.getItem("user")) ?? {};
     currentUser.cart = context.cart;
     sessionStorage.setItem("user", JSON.stringify(currentUser));
 
     console.log("after", context.cart);
-    navigate("/", alert("Cart Is Empty Now"));
+    navigate("/", alert("Cart is empty now"));
   }
   return (
     <div className="main">
@@ -118,8 +117,12 @@ const PaymentPage = () => {
 
       <div className="create-account-form">
         {showForm(method)}
-        <button className="active-color-btn center-btn" onClick={pay}>
-          PAY
+        <button
+          className="active-color-btn center-btn"
+          onClick={pay}
+          style={{ borderRadius: "5px", padding: "4px 20px" }}
+        >
+          Pay
         </button>
       </div>
     </div>

@@ -1,7 +1,10 @@
 import { useContext, useState } from "react";
 import { MyContext } from "../context/app-context";
+import { useNavigate } from "react-router-dom";
 
 const CreateAccountPage = () => {
+  const navigate = useNavigate();
+
   const context = useContext(MyContext);
   const emptyObject = {};
   const [firstName, setFirstName] = useState();
@@ -17,7 +20,6 @@ const CreateAccountPage = () => {
     emptyObject.cart = context.cart;
     const prevRecords = JSON.parse(localStorage.getItem("accounts")) ?? [];
     console.log("previous accounts", prevRecords);
-
     // checking if account already present & we can also use find method
     let match = prevRecords.filter((e) => e.userName === userName);
     console.log(match);
@@ -35,6 +37,7 @@ const CreateAccountPage = () => {
           JSON.stringify([...prevRecords, emptyObject])
         );
         alert("Account Created Successfully");
+        navigate("/");
       }
     }
   };
@@ -80,8 +83,12 @@ const CreateAccountPage = () => {
             setPassword(e.target.value);
           }}
         ></input>
-        <button className="center-btn active-color-btn" onClick={addAccount}>
-          Create account
+        <button
+          className="center-btn active-color-btn"
+          onClick={addAccount}
+          style={{ borderRadius: "8px", padding: "5px 8px" }}
+        >
+          Create Account
         </button>
       </form>
     </div>

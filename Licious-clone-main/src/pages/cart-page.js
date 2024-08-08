@@ -34,6 +34,7 @@ const CartPage = () => {
       }
     } else {
       alert("Please Login To Checkout");
+      document.getElementById("login-modal").showModal();
     }
   };
 
@@ -43,7 +44,11 @@ const CartPage = () => {
         <h3>
           <span>Total : ₹{total}</span>
         </h3>
-        <button onClick={verify} className="active-color-btn checkout-btn" style={{ padding: "2px 5px", borderRadius: "5px" }}>
+        <button
+          onClick={verify}
+          className="active-color-btn checkout-btn"
+          style={{ padding: "2px 5px", borderRadius: "5px" }}
+        >
           Checkout
         </button>
       </div>
